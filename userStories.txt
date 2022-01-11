@@ -1,0 +1,7 @@
+As a user, I want to be able to create quizzes
+As a user, I want to be able to share a link to my quiz
+As a user, I want to be aqble to see a list of public quizzes on my homepage
+As a user, I want be able to attempt a quiz
+as a user, I want to be able to see the results of my own quiz attempts
+As a user, I have the ability to share a link to the results of my quiz attempts
+As a user, I have the ability to choose if my quizzes are public (everyone can see and share them) or private
