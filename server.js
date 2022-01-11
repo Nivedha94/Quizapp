@@ -27,9 +27,9 @@ app.use(express.json());
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 8 * 60 * 60 * 1000 }, // 8 hours
   })
 );
 
@@ -47,24 +47,8 @@ app.use(
 
 app.use(express.static("public"));
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-
-// import the routers
-const checkAuth = require("./middleware/checkAuth");
-const quizRoutes = require("./routes/quiz");
-const resultRoutes = require("./routes/results");
-const loginRoute = require("./routes/login");
-
-// pass the routers to express as middleware
-app.use("/auth", loginRoute(db));
-app.use("/quiz", checkAuth, quizRoutes);
-app.use("/results", checkAuth, resultRoutes);
-
-// get all public quizzes
-app.get("/", checkAuth, (req, res) => {
-  res.render("index");
-});
+const allRoutes = require("./routes");
+app.use("/", allRoutes(db));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -4,13 +4,11 @@ const router = express.Router();
 module.exports = (db) => {
   router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    console.log(req.body);
     db.query(`SELECT id FROM users WHERE email = $1 AND password = $2`, [
       username,
       password,
     ])
       .then((data) => {
-        console.log(data);
         const userId = data.rows[0].id;
         req.session.loggedIn = userId ? true : false;
         req.session.userId = userId;

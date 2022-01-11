@@ -18,6 +18,8 @@
   </head>
 
   <body>
+    <% allQuizzes.public.forEach((quiz) => { %>
+      
     <header><%- include('partials/nav') %></header>
 
     <div class="hero-img">
@@ -28,7 +30,7 @@
     <main class="card-container">
       <div class="list-group">
         <a
-          href="/quiz/start"
+          href="/quiz/start/1"
           class="list-group-item list-group-item-action flex-column align-items-start active"
         >
           <div class="d-flex w-100 justify-content-between">
