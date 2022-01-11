@@ -7,7 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const session = require("express-session")
+const session = require("express-session");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -24,12 +24,14 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Use the session middleware
-app.use(session({ 
-  secret: 'keyboard cat', 
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 60000 }
-}))
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 },
+  })
+);
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -51,7 +53,7 @@ app.use(express.static("public"));
 // import the routers
 const checkAuth = require("./middleware/checkAuth");
 const quizRoutes = require("./routes/quiz");
-const resultRoutes = require("./routes/results")
+const resultRoutes = require("./routes/results");
 const loginRoute = require("./routes/login");
 
 // pass the routers to express as middleware
@@ -60,10 +62,9 @@ app.use("/quiz", checkAuth, quizRoutes);
 app.use("/results", checkAuth, resultRoutes);
 
 // get all public quizzes
-app.get("/", (req, res) => {
+app.get("/", checkAuth, (req, res) => {
   res.render("index");
 });
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

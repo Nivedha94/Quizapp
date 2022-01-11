@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write '**/*.js'",
     "start": "nodemon server.js",
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js"
@@ -20,6 +21,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.0",
     "pg-native": "^3.0.0",
+    "prettier": "^2.5.1",
     "sass": "^1.35.1"
   },
   "devDependencies": {
