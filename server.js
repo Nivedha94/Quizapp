@@ -37,19 +37,18 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 
 // import the routers
-const quiz_router = require("./routes/quiz_router");
+const quizRoutes = require("./routes/quiz");
+const resultRoutes = require("./routes/results")
 
 // pass the routers to express as middleware
-app.use("/quiz", quiz_router);
+app.use("/quiz", quizRoutes);
+app.use("/results", resultRoutes)
 
-// Home page
+// get all public quizzes
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
