@@ -43,12 +43,12 @@ module.exports = (db) => {
       [id]
     )
       .then((rawData) => {
-        let data = rawData.rows.map((data) => ({
-          title: data.title,
-          description: data.description,
-          questions: data.questions_and_options,
-        }));
-        console.log(data.questions);
+        let data = {
+          title: rawData.rows[0].title,
+          description: rawData.rows[0].description,
+          questions: rawData.rows[0].questions_and_options,
+        };
+        // console.log(data[0].questions);
         res.render("quiz-game", { quizzes: data });
       })
       .catch((err) => {
@@ -58,10 +58,36 @@ module.exports = (db) => {
 
   router.post("/start/:id", (req, res) => {
     const { id } = req.params;
-    db.query(`SELECT  questions_and_options FROM quizzes WHERE id = $1`, [id])
+    const answers = req.body;
+    db.query(`SELECT title, questions_and_options FROM quizzes WHERE id = $1`, [
+      id,
+    ])
       .then((rawData) => {
-        const data = JSON.parse(rawData.rows[0].questions_and_options);
-        let correctAnswers = data.questions.reduce((acc, ques, index) => {}, 0);
+        const title = rawData.rows[0].title;
+        const data = rawData.rows[0].questions_and_options;
+        let score = data.reduce(
+          (acc, ques) =>
+            answers[ques.id] === ques.correctAnswer ? acc + 1 : acc,
+          0
+        );
+        db.query(`SELECT * FROM achievements WHERE user_id = $1`, [
+          req.session.userId,
+        ]).then((rawData) => {
+          let achievements = rawData.rows[0];
+          let oldHistory = achievements.history;
+
+          db.query(
+            `UPDATE achievements SET trophies = $1, history = $2  WHERE user_id = $3`,
+            [
+              score / data.length >= 0.8
+                ? achievements.trophies + 1
+                : achievements.trophies,
+              JSON.stringify([...oldHistory, { title, score }]),
+              req.session.userId,
+            ]
+          );
+        });
+        res.render("quiz-result", { score });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });

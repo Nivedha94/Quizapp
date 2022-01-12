@@ -1,9 +1,9 @@
--- Drop and recreate Achivements table
+-- Drop and recreate Achievements table
 DROP TABLE
-    IF EXISTS achivements CASCADE;
+    IF EXISTS achievements CASCADE;
 
 CREATE TABLE
-    achivements (
+    achievements (
         id SERIAL PRIMARY KEY NOT NULL,
         user_id INTEGER REFERENCES users(id),
         trophies INTEGER NOT NULL,
