@@ -2,6 +2,13 @@ const express = require("express");
 const crypto = require("crypto");
 const router = express.Router();
 
+
+router.get("/library", (req, res) => {
+  res.render("quiz-library");
+});
+
+module.exports = router;
+
 module.exports = (db) => {
   router.get("/create", (req, res) => {
     res.render("createQuiz");
@@ -43,21 +50,12 @@ module.exports = (db) => {
       [id]
     )
       .then((rawData) => {
-<<<<<<< HEAD
-        let data = rawData.rows.map((data) => ({
-          title: data.title,
-          description: data.description,
-          questions: data.questions_and_options,
-        }));
-        console.log(data[0].questions);
-=======
         let data = {
           title: rawData.rows[0].title,
           description: rawData.rows[0].description,
           questions: rawData.rows[0].questions_and_options,
         };
         // console.log(data[0].questions);
->>>>>>> a4d36bd48a451abb448008024085e36bee9edde7
         res.render("quiz-game", { quizzes: data });
       })
       .catch((err) => {
@@ -105,3 +103,4 @@ module.exports = (db) => {
 
   return router;
 };
+

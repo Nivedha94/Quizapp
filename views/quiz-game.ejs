@@ -9,15 +9,6 @@
 
   <body>
     <header><%- include('partials/nav') %></header>
-<<<<<<< HEAD
-    <% quizzes.forEach(function(quiz) { %>
-    <% quiz.questions.forEach(function(question) { %>
-    <div>
-      <h2><%- question %></h2>
-      <ul>
-        <% question.options.forEach(function(answer) { %>
-        <li>
-=======
     <form action="/quiz/start/1" method="post">
       <p><%- quizzes.title %></p>
       <p><%- quizzes.description %></p>
@@ -26,23 +17,14 @@
         <p><%- quiz.question %></p>
         <% quiz.options.forEach(function(answer) { %>
         <label>
->>>>>>> a4d36bd48a451abb448008024085e36bee9edde7
           <input type="radio" name="<%= quiz.id %>" value="<%= answer %>" /><%=
           answer %>
         </label>
         <br />
         <% }) %>
-<<<<<<< HEAD
-      </ul>
-    </div>
-    <% }) %>
-    <% }) %>
-=======
       </div>
       <% }) %>
       <button type="submit">submit</button>
     </form>
->>>>>>> a4d36bd48a451abb448008024085e36bee9edde7
-    <script src="/public/scripts/app.js"></script>
   </body>
 </html>

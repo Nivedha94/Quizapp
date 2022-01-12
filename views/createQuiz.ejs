@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Create a Quiz - Quiz App</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+<head>
+  <title>Create a Quiz - Quiz App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <header><%- include('partials/nav') %></header>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+</head>
 
-    <h1>Create a New Quiz</h1>
+<body>
+  <header>
+    <%- include('partials/nav') %>
+  </header>
 
-    <main class="quiz-container">
-      <form action="/quiz/create" method="POST">
-        <input class="question" type="text" placeholder="title" name="title" />
-        <input
-          class="question"
-          type="text"
-          placeholder="description"
-          name="description"
-        />
+  <h1 id="create-h1">Create a New Quiz</h1>
 
-        <div class="qna-container">
-          <div>
-            <input
-              class="question"
-              type="text"
-              placeholder="Question 1"
-              name="questions[][question]"
-            />
-          </div>
-          <div>
-            <input
-              class="correct"
-              type="text"
-              placeholder="Correct Answer"
-              name="questions[][correctAnswer]"
-            />
-            <input
-              class="ans"
-              type="text"
-              placeholder="Option 2"
-              name="questions[][options][]"
-            />
-            <input
-              class="ans"
-              type="text"
-              placeholder="Option 3"
-              name="questions[][options][]"
-            />
-            <input
-              class="ans"
-              type="text"
-              placeholder="Option 4"
-              name="questions[][options][]"
-            />
-          </div>
+  <main class="quiz-container">
+    <form action="/quiz/create" method="POST">
+      <div class="create-header">
+      <input class="question" type="text" placeholder="Title" name="title" />
+      <input class="question" type="text" placeholder="Description" name="description" />
+</div>
+      <div class="qna-container">
+        <div>
+          <input class="question" type="text" placeholder="Question 1" name="questions[][question]" />
         </div>
-        <label>
-          <input type="radio" name="isPublic" value="public" /> Quiz is Public
-        </label>
-        <label>
-          <input type="radio" name="isPublic" value="private" /> Quiz is Private
-        </label>
-        <button type="submit" class="btn btn-lg btn-warning">Create</button>
-      </form>
-    </main>
-  </body>
+        <div>
+          <input class="correct" type="text" placeholder="Correct Answer" name="questions[][correctAnswer]" />
+          <input class="ans" type="text" placeholder="Option 2" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 3" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 4" name="questions[][options][]" />
+        </div>
+      </div>
+      <div class="qna-container">
+        <div>
+          <input class="question" type="text" placeholder="Question 2" name="questions[][question]" />
+        </div>
+        <div>
+          <input class="correct" type="text" placeholder="Correct Answer" name="questions[][correctAnswer]" />
+          <input class="ans" type="text" placeholder="Option 2" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 3" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 4" name="questions[][options][]" />
+        </div>
+      </div>
+      <div class="qna-container">
+        <div>
+          <input class="question" type="text" placeholder="Question 3" name="questions[][question]" />
+        </div>
+        <div>
+          <input class="correct" type="text" placeholder="Correct Answer" name="questions[][correctAnswer]" />
+          <input class="ans" type="text" placeholder="Option 2" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 3" name="questions[][options][]" />
+          <input class="ans" type="text" placeholder="Option 4" name="questions[][options][]" />
+        </div>
+      </div>
+      <div>
+        <input type="radio" name="isPublic" value="public" /> Quiz is public
+      </div>
+      <div class="private">
+        <input type="radio" name="isPublic" value="private" /> Quiz is private
+      </div>
+      <div>
+      <button type="submit" class="btn btn-md btn-warning">Create</button>
+      </div>
+    </form>
+  </main>
+</body>
+
 </html>

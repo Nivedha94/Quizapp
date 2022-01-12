@@ -9,8 +9,27 @@
   <body>
     <header><%- include('partials/nav') %></header>
 
-    <h1>RESULTS</h1>
-    <p><%= JSON.stringify(history) %></p>
+    <h1 id="results-header">RESULTS</h1>
+    <!-- <%= JSON.stringify(history) %> -->
+
+<!-- rendering results table -->
+    <table class="results-table">
+      <div class="table-head">
+      <tr>
+        <th class="quiz-title">Quiz Title</th><th class="quiz-title">Score</th>
+      </tr>
+    </div>
+      <% for (let i = 0; i < history.length; i++) { %>
+        <tr>
+          <td><%= history[i].title %></td>
+          <td><%= history[i].score %></td>
+        </tr>
+        <% } %>
+
+    </table>
     <p><%= trophies %></p>
+
+
   </body>
 </html>
+
