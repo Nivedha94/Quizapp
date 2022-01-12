@@ -19,7 +19,11 @@
 
   <body>
     <% allQuizzes.public.forEach((quiz) => { %>
-      
+
+      <div>
+        <%= quiz %>
+      </div>
+      <% }); %> 
     <header><%- include('partials/nav') %></header>
 
     <div class="hero-img">

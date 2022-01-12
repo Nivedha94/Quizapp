@@ -48,7 +48,7 @@ module.exports = (db) => {
           description: data.description,
           questions: data.questions_and_options,
         }));
-        console.log(data.questions);
+        console.log(data[0].questions);
         res.render("quiz-game", { quizzes: data });
       })
       .catch((err) => {
