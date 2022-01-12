@@ -1,6 +1,6 @@
 const checkAuth = (req, res, next) => {
-  if (!req.session.loggedIn) {
-    res.redirect("/auth/login");
+  if (!req.cookies.userId) {
+    res.send("You are not logged in use /auth/login/:id to login");
   } else {
     next();
   }

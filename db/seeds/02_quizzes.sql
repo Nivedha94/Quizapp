@@ -10,5 +10,5 @@ VALUES (
         'Test Quiz',
         'This is a test quiz',
         1,
-        '[{"name":"test"},{"name":"test2"}]'
+        '[{"question":"test 123 123","correctAnswer":"test cr","options":["test 23","test 45","test 67","test cr"],"id":"82cf"}]'
     );

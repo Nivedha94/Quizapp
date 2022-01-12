@@ -5,13 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script>
-      console.log()
-    </script>
   </head>
 
   <body>
     <header><%- include('partials/nav') %></header>
+<<<<<<< HEAD
     <% quizzes.forEach(function(quiz) { %>
     <% quiz.questions.forEach(function(question) { %>
     <div>
@@ -19,14 +17,32 @@
       <ul>
         <% question.options.forEach(function(answer) { %>
         <li>
+=======
+    <form action="/quiz/start/1" method="post">
+      <p><%- quizzes.title %></p>
+      <p><%- quizzes.description %></p>
+      <% quizzes.questions.forEach(function(quiz) { %>
+      <div>
+        <p><%- quiz.question %></p>
+        <% quiz.options.forEach(function(answer) { %>
+        <label>
+>>>>>>> a4d36bd48a451abb448008024085e36bee9edde7
           <input type="radio" name="<%= quiz.id %>" value="<%= answer %>" /><%=
           answer %>
-        </li>
+        </label>
+        <br />
         <% }) %>
+<<<<<<< HEAD
       </ul>
     </div>
     <% }) %>
     <% }) %>
+=======
+      </div>
+      <% }) %>
+      <button type="submit">submit</button>
+    </form>
+>>>>>>> a4d36bd48a451abb448008024085e36bee9edde7
     <script src="/public/scripts/app.js"></script>
   </body>
 </html>

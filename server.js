@@ -7,8 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const session = require("express-session");
-
+const cookieParser = require("cookie-parser");
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -23,15 +22,8 @@ app.use(morgan("dev"));
 //body parser middleware
 app.use(express.json());
 
-// Use the session middleware
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 8 * 60 * 60 * 1000 }, // 8 hours
-  })
-);
+// Use the cookie parsing middleware
+app.use(cookieParser());
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +40,7 @@ app.use(
 app.use(express.static("public"));
 
 const allRoutes = require("./routes");
+const { cookie } = require("express/lib/response");
 app.use("/", allRoutes(db));
 
 app.listen(PORT, () => {
