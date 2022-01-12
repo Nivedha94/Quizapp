@@ -16,7 +16,7 @@ module.exports = (db) => {
         title,
         description,
         isPublic === "public",
-        req.session.userId,
+        req.cookies.userId,
         JSON.stringify(
           data.questions.map((ques) => ({
             ...ques,
@@ -71,7 +71,7 @@ module.exports = (db) => {
           0
         );
         db.query(`SELECT * FROM achievements WHERE user_id = $1`, [
-          req.session.userId,
+          req.cookies.userId,
         ]).then((rawData) => {
           let achievements = rawData.rows[0];
           let oldHistory = achievements.history;
@@ -83,7 +83,7 @@ module.exports = (db) => {
                 ? achievements.trophies + 1
                 : achievements.trophies,
               JSON.stringify([...oldHistory, { title, score }]),
-              req.session.userId,
+              req.cookies.userId,
             ]
           );
         });

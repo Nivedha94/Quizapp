@@ -11,7 +11,7 @@ const loginRoute = require("./login");
 
 // pass the routers to express as middleware
 module.exports = (db) => {
-  router.use("/auth", loginRoute(db));
+  router.use("/auth", loginRoute);
   router.use("/quiz", checkAuth, quizRoutes(db));
   router.use("/results", checkAuth, resultRoutes(db));
 

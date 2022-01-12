@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
   router.get("/all", (req, res) => {
     db.query(`SELECT * FROM achievements WHERE user_id = $1`, [
-      req.session.userId,
+      req.cookies.userId,
     ])
       .then((rawData) => {
         let achievements = rawData.rows[0];
