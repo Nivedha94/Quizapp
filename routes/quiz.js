@@ -2,17 +2,37 @@ const express = require("express");
 const crypto = require("crypto");
 const router = express.Router();
 
-
-router.get("/library", (req, res) => {
-  res.render("quiz-library");
-});
-
-module.exports = router;
-
 module.exports = (db) => {
   router.get("/create", (req, res) => {
     res.render("createQuiz");
   });
+
+  router.get("/library", (req, res) => {
+    db.query(
+      `SELECT title, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id ORDER BY quizzes.created_at DESC;`
+    )
+      .then((rawData) => {
+        const data = rawData.rows.reduce(
+          (acc, quiz) => {
+            if (quiz.is_public) {
+              return { ...acc, public: [...acc.public, quiz] };
+            } else {
+              return { ...acc, private: [...acc.private, quiz] };
+            }
+          },
+          { public: [], private: [] }
+        );
+        console.log(data);
+        res.render("quiz-library", { allQuizzes: data });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  // router.get("/create", (req, res) => {
+  //   res.render("createQuiz");
+  // });
 
   router.post("/create", (req, res) => {
     const { title, description, isPublic, ...data } = req.body;

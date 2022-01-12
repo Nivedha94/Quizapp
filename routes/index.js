@@ -18,7 +18,7 @@ module.exports = (db) => {
   // get all public quizzes
   router.get("/", checkAuth, (req, res) => {
     db.query(
-      `SELECT title, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id`
+      `SELECT title, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id ORDER BY quizzes.created_at DESC;`
     )
       .then((rawData) => {
         const data = rawData.rows.reduce(

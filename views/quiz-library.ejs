@@ -21,7 +21,33 @@
 
 <h2>public quizzes</h2>
 
+<table>
+  <tr>
+    <th>Quiz Title </th><th>Description</th><th>Name</th>
+  </tr>
+  <% for (let i = 0; i < allQuizzes.public.length; i++) { %>
+    <tr>
+      <td><%= allQuizzes.public[i].title %></td>
+      <td><%= allQuizzes.public[i].description %></td>
+      <td><%= allQuizzes.public[i].name %></td>
+    </tr>
+    <% } %>
+</table>
+
 <h2>private quizzes</h2>
+
+<table>
+  <tr>
+    <th>Quiz Title </th><th>Description</th><th>Name</th>
+  </tr>
+  <% for (let i = 0; i < allQuizzes.private.length; i++) { %>
+    <tr>
+      <td><%= allQuizzes.private[i].title %></td>
+      <td><%= allQuizzes.private[i].description %></td>
+      <td><%= allQuizzes.private[i].name %></td>
+    </tr>
+    <% } %>
+</table>
 
 </body>
 

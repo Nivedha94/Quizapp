@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/all", (req, res) => {
-    db.query(`SELECT * FROM achievements WHERE user_id = $1`, [
+    db.query(`SELECT * FROM achievements WHERE user_id = $1;`, [
       req.cookies.userId,
     ])
       .then((rawData) => {
