@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results</title>
-  </head>
-  <body>
-    <header><%- include('partials/nav') %></header>
 
-    <h1 id="results-header">RESULTS</h1>
-    <!-- <%= JSON.stringify(history) %> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results</title>
+</head>
 
-<!-- rendering results table -->
-    <table class="results-table">
-      <div class="table-head">
+<body>
+  <header>
+    <%- include('partials/nav') %>
+  </header>
+
+  <h1 id="results-header">RESULTS</h1>
+  
+  <!-- rendering results table -->
+  <table class="results-table">
+    <div class="table-head">
       <tr>
-        <th class="quiz-title">Quiz Title</th><th class="quiz-title">Score</th>
+        <th class="quiz-title">Quizzes</th>
+        <th class="quiz-title">Score</th>
       </tr>
     </div>
-      <% for (let i = 0; i < history.length; i++) { %>
-        <tr>
-          <td><%= history[i].title %></td>
-          <td><%= history[i].score %></td>
-        </tr>
-        <% } %>
+    <% for (let i=0; i < history.length; i++) { %>
+      <tr>
+        <td>
+          <%= history[i].title %>
+        </td>
+        <td>
+          You scored:
+          <%= history[i].score %>
+          points
+        </td>
+      </tr>
+      <% } %>
 
-    </table>
-    <p><%= trophies %></p>
+  </table>
+  <h2>Overall Score</h2>
+  <p>
+    <%= trophies %>
+  </p>
 
 
-  </body>
+
+</body>
+
 </html>
-

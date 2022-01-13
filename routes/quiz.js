@@ -9,7 +9,7 @@ module.exports = (db) => {
 
   router.get("/library", (req, res) => {
     db.query(
-      `SELECT title, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id ORDER BY quizzes.created_at DESC;`
+      `SELECT title, quizzes.id, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id ORDER BY quizzes.created_at DESC;`
     )
       .then((rawData) => {
         const data = rawData.rows.reduce(
@@ -29,10 +29,6 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
-
-  // router.get("/create", (req, res) => {
-  //   res.render("createQuiz");
-  // });
 
   router.post("/create", (req, res) => {
     const { title, description, isPublic, ...data } = req.body;

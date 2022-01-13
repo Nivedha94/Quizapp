@@ -27,101 +27,24 @@
 
   <table>
     <tr>
-      <th>Quiz Title </th><th>Description</th><th>Name</th>
+      <th>Quiz Title </th>
+      <th>Description</th>
+      <th>Name</th>
     </tr>
-    <% for (let i = 0; i < allQuizzes.public.length; i++) { %>
+    <% for (let i=0; i < allQuizzes.public.length; i++) { %>
       <tr>
-        <td><%= allQuizzes.public[i].title %></td>
-        <td><%= allQuizzes.public[i].description %></td>
-        <td><%= allQuizzes.public[i].name %></td>
+        <td> <a href="http://localhost:8080/quiz/start/<%= allQuizzes.public[i].id %>">
+            <%= allQuizzes.public[i].title %>
+          </a></td>
+        <td>
+          <%= allQuizzes.public[i].description %>
+        </td>
+        <td>
+          <%= allQuizzes.public[i].name %>
+        </td>
       </tr>
       <% } %>
   </table>
-
-  <main class="card-container">
-    <div class="list-group">
-      <a href="/quiz/start/1" class="list-group-item list-group-item-action flex-column align-items-start active">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">French French French!</h5>
-          <small>3 days ago</small>
-        </div>
-        <p class="mb-1">
-          Answer 6 questions and find out how well you know your French
-          vocabulary.
-        </p>
-        <small>created by @dogbackwards</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Are You Smarter Than A 5th Grader? Prove It!</h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          Trivia for adults...that children know the answers to. How will you
-          do?
-        </p>
-        <small class="text-muted">created by @whitjeff</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">
-            Javascript - Looping through Arrays and Objects. Oh My!
-          </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          Do you know Javascript as well as you think you do? Take this quiz
-          to find out.
-        </p>
-        <small class="text-muted">created by @codingrocks5</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">The Ultimate Family Guy Quiz</h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          Peter, Lois, Chris, Stewie, Brian and … what's her name? Oh, right,
-          Meg. How much do you know about the residents of Quahog?
-        </p>
-        <small class="text-muted">created by @peterpumpkineater</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Basic Math Quiz!</h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          Think you can answer these simple maths questions? Take the quiz and
-          see many points you can score!
-        </p>
-        <small class="text-muted">created by @fishsoup69</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">The Ultimate 2000s Quiz For 2000s Kids</h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          This 2000s Trivia Quiz Is So Easy That Every Millennial Should Be
-          Able To Get A 15/15.
-        </p>
-        <small class="text-muted">created by @00sgurl</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">How Much Do You Know About HTML And CSS?</h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">
-          While HTML is the heart of the internet, CSS provides the beauty.
-          This quiz was designed to test your technical knowledge of CSS and
-          HTML.
-        </p>
-        <small class="text-muted">created by @spidermonkey</small>
-      </a>
-    </div>
-  </main>
 </body>
 
 </html>

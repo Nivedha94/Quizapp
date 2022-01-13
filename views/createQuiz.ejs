@@ -23,9 +23,9 @@
   <main class="quiz-container">
     <form action="/quiz/create" method="POST">
       <div class="create-header">
-      <input class="question" type="text" placeholder="Title" name="title" />
-      <input class="question" type="text" placeholder="Description" name="description" />
-</div>
+        <input class="question" type="text" placeholder="Title" name="title" />
+        <input class="question" type="text" placeholder="Description" name="description" />
+      </div>
       <div class="qna-container">
         <div>
           <input class="question" type="text" placeholder="Question 1" name="questions[][question]" />
@@ -60,13 +60,13 @@
         </div>
       </div>
       <div>
-        <input type="radio" name="isPublic" value="public" /> Quiz is public
+        <input type="radio" name="isPublic" value="public" checked /> Quiz is public
       </div>
       <div class="private">
         <input type="radio" name="isPublic" value="private" /> Quiz is private
       </div>
       <div>
-      <button type="submit" class="btn btn-md btn-warning">Create</button>
+        <button type="submit" class="btn btn-md btn-warning">Create</button>
       </div>
     </form>
   </main>
