@@ -7,6 +7,29 @@ module.exports = (db) => {
     res.render("createQuiz");
   });
 
+  router.get("/library", (req, res) => {
+    db.query(
+      `SELECT title, quizzes.id, description, name, quizzes.created_at, is_public FROM quizzes, users WHERE quizzes.author_id = users.id ORDER BY quizzes.created_at DESC;`
+    )
+      .then((rawData) => {
+        const data = rawData.rows.reduce(
+          (acc, quiz) => {
+            if (quiz.is_public) {
+              return { ...acc, public: [...acc.public, quiz] };
+            } else {
+              return { ...acc, private: [...acc.private, quiz] };
+            }
+          },
+          { public: [], private: [] }
+        );
+        console.log(data);
+        res.render("quiz-library", { allQuizzes: data });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.post("/create", (req, res) => {
     const { title, description, isPublic, ...data } = req.body;
     console.log(data);
@@ -44,11 +67,11 @@ module.exports = (db) => {
     )
       .then((rawData) => {
         let data = {
+          id: id,
           title: rawData.rows[0].title,
           description: rawData.rows[0].description,
           questions: rawData.rows[0].questions_and_options,
         };
-        // console.log(data[0].questions);
         res.render("quiz-game", { quizzes: data });
       })
       .catch((err) => {
@@ -96,3 +119,4 @@ module.exports = (db) => {
 
   return router;
 };
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/nav') %>
+  </header>
+
+  <div class="lib-page">
+  <div class="pub-quiz">
+    <h2 class="lib-head">Your Public Quizzes</h2>
+    <div class="home-quiz-table2">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Quizzes</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i < allQuizzes.public.length; i++) { %>
+
+            <tr>
+              <td class="home-quiz-title">
+                <%= allQuizzes.public[i].title %>
+              </td>
+              <td>
+                <%= allQuizzes.public[i].description %>
+              </td>
+              <td> <a href="http://localhost:8080/quiz/start/<%= allQuizzes.public[i].id %>">
+                  <button type="button" class="btn btn-warning">View Quiz</button> </a> </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pri-quiz">
+
+    <h2 class="lib-head">Your Private Quizzes</h2>
+
+    <div class="home-quiz-table3">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Quizzes</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i < allQuizzes.private.length; i++) { %>
+
+            <tr>
+              <td class="home-quiz-title">
+                <%= allQuizzes.private[i].title %>
+              </td>
+              <td>
+                <%= allQuizzes.private[i].description %>
+              </td>
+              <td> <a href="http://localhost:8080/quiz/start/<%= allQuizzes.private[i].id %>">
+                  <button type="button" class="btn btn-warning">View Quiz</button> </a> </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results</title>
-  </head>
-  <body>
-    <header><%- include('partials/nav') %></header>
 
-    <h1>RESULTS</h1>
-    <p><%= JSON.stringify(history) %></p>
-    <p><%= trophies %></p>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results</title>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/nav') %>
+  </header>
+
+  <h1 id="results-header">RESULTS</h1>
+
+  <div class="result-page">
+
+    <div class="home-quiz-table4">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Quizzes</th>
+            <th scope="col">Your Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i < history.length; i++) { %>
+            <tr>
+              <td>
+                <%= history[i].title %>
+              </td>
+              <td> You scored:
+                <%= history[i].score %>
+                  point
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+
+      </table>
+    </div>
+    <div class="overall-score">
+      <h2>Overall Score:</h2>
+      <div class="trophy">
+        <%= trophies %>
+          points!
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
 </html>
