@@ -14,34 +14,42 @@
   </header>
 
   <h1 id="results-header">RESULTS</h1>
-  
-  <!-- rendering results table -->
-  <table class="results-table">
-    <div class="table-head">
-      <tr>
-        <th class="quiz-title">Quizzes</th>
-        <th class="quiz-title">Score</th>
-      </tr>
+
+  <div class="result-page">
+
+    <div class="home-quiz-table4">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Quizzes</th>
+            <th scope="col">Your Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i < history.length; i++) { %>
+            <tr>
+              <td>
+                <%= history[i].title %>
+              </td>
+              <td> You scored:
+                <%= history[i].score %>
+                  point
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+
+      </table>
     </div>
-    <% for (let i=0; i < history.length; i++) { %>
-      <tr>
-        <td>
-          <%= history[i].title %>
-        </td>
-        <td>
-          You scored:
-          <%= history[i].score %>
-          points
-        </td>
-      </tr>
-      <% } %>
-
-  </table>
-  <h2>Overall Score</h2>
-  <p>
-    <%= trophies %>
-  </p>
-
+    <div class="overall-score">
+      <h2>Overall Score:</h2>
+      <div class="trophy">
+        <%= trophies %>
+          points!
+      </div>
+    </div>
+  </div>
 
 
 </body>

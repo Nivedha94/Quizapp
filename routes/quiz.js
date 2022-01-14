@@ -67,11 +67,11 @@ module.exports = (db) => {
     )
       .then((rawData) => {
         let data = {
+          id: id,
           title: rawData.rows[0].title,
           description: rawData.rows[0].description,
           questions: rawData.rows[0].questions_and_options,
         };
-        // console.log(data[0].questions);
         res.render("quiz-game", { quizzes: data });
       })
       .catch((err) => {

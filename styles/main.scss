@@ -163,8 +163,8 @@ h1.start-title {
   margin-bottom: 40px;
 }
 
-#create-header {
-  margin-bottom: 30px;
+.create-header {
+  margin-bottom: 20px;
 }
 
 .private {
@@ -172,8 +172,8 @@ h1.start-title {
 }
 
 #results-header {
-margin-bottom: 30px;
-margin-left: 0;
+margin-bottom: 50px;
+margin-left: 0px;
 display: flex;
 justify-content: center;
 }
@@ -187,3 +187,120 @@ justify-content: center;
   justify-content: space-around;
 }
 
+.quiz-card {
+  background-color: white;
+  display: flex;
+align-content: center;
+  margin-top: 100px;
+  width: 25%;
+  padding: 20px 50px;
+  border-radius: 20px;
+  border: 1px solid #282e3e;
+  margin: 0 auto;
+margin-top: 100px;
+}
+
+#quiz-title-card {
+  margin: 10px 0 20px 0
+}
+
+#quiz-q {
+  font-size: 17px;
+}
+
+.home-quiz-table {
+  width: 80%;
+background-color: white;
+margin: 0 auto;
+border-radius: 20px;
+border: 1px solid #32383e;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+th {
+  font-size: 20px;
+}
+
+.home-quiz-title {
+  font-size: 18px;
+font-weight: 500;
+}
+
+.home {
+  margin-left: 140px;
+  margin-bottom: 60px;
+  text-align: left;
+  font-size: 30px;
+margin-top: 50px;
+margin-bottom: 50px;
+font-weight: 600;
+}
+
+.lib-head {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.pub-quiz {
+  margin-left: 50px;
+}
+
+.home-quiz-table4 {
+background-color: white;
+border-radius: 20px;
+border: 1px solid #32383e;
+width: 40%;
+}
+
+.lib-page {
+  display: flex;
+}
+
+.home-quiz-table3 {
+background-color: white;
+border-radius: 20px;
+border: 1px solid #32383e;
+margin-right: 120px;
+width: 80%;
+}
+
+.result-page {
+  display: flex;
+  justify-content: center;
+}
+
+.overall-score {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+.trophy {
+  font-size: 40px;
+  font-weight: 600;
+color: #4355ff;
+}
+
+.score-title {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 100px;
+  margin-top: 200px;
+  margin-left: 0%;
+  background-color: #ffc107;
+  color: #4355ff;
+}
+
+.home-quiz-table2 {
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #32383e;
+  margin-right: 120px;
+  width: 80%;
+  }

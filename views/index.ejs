@@ -24,27 +24,32 @@
   </div>
 
   <h1 class="home">Latest Quizzes</h1>
+  <div class="home-quiz-table">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Quizzes</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i=0; i < allQuizzes.public.length; i++) { %>
 
-  <table>
-    <tr>
-      <th>Quiz Title </th>
-      <th>Description</th>
-      <th>Name</th>
-    </tr>
-    <% for (let i=0; i < allQuizzes.public.length; i++) { %>
-      <tr>
-        <td> <a href="http://localhost:8080/quiz/start/<%= allQuizzes.public[i].id %>">
-            <%= allQuizzes.public[i].title %>
-          </a></td>
-        <td>
-          <%= allQuizzes.public[i].description %>
-        </td>
-        <td>
-          <%= allQuizzes.public[i].name %>
-        </td>
-      </tr>
-      <% } %>
-  </table>
+          <tr>
+            <td class="home-quiz-title">
+              <%= allQuizzes.public[i].title %>
+            </td>
+            <td>
+              <%= allQuizzes.public[i].description %>
+            </td>
+            <td> <a href="http://localhost:8080/quiz/start/<%= allQuizzes.public[i].id %>">
+                <button type="button" class="btn btn-warning">Try Quiz</button> </a> </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
 </body>
 
 </html>

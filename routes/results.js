@@ -10,7 +10,7 @@ module.exports = (db) => {
         let achievements = rawData.rows[0];
         res.render("results", {
           trophies: achievements.trophies,
-          history: achievements.history,
+          history: achievements.history.reverse(),
         });
       })
       .catch((err) => {
